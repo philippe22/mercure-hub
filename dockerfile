@@ -45,4 +45,10 @@ ENV ADDR=0.0.0.0:80
 EXPOSE 80
 
 # Lancer Mercure et PHP-FPM ensemble
-CMD sh -c "mercure run & php-fpm"
+# CMD sh -c "mercure run & php-fpm"
+CMD sh -c "mercure run \
+  --addr=$ADDR \
+  --publish-allowed-origins=$MERCURE_PUBLISH_ALLOWED_ORIGINS \
+  --subscribe-allowed-origins=$MERCURE_SUBSCRIBE_ALLOWED_ORIGINS \
+  --jwt-key=\"$JWT_KEY\" & php-fpm"
+
