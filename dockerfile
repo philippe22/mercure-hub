@@ -1,7 +1,7 @@
 # Étape 1 : Image PHP + extensions nécessaires pour Symfony
 FROM php:8.2-fpm-alpine
 
-# Installer les extensions et utilitaires
+# Installer extensions et outils nécessaires
 RUN apk add --no-cache \
     bash \
     git \
@@ -10,7 +10,11 @@ RUN apk add --no-cache \
     libzip-dev \
     icu-dev \
     oniguruma-dev \
-    && docker-php-ext-install intl pdo pdo_mysql zip opcache
+    xmlrpc-dev \
+    zlib-dev \
+    libxml2-dev \
+    && docker-php-ext-install intl pdo pdo_mysql zip opcache xml
+
 
 # Installer Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
