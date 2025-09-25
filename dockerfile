@@ -33,7 +33,14 @@ WORKDIR /var/www/html
 COPY --from=0 /var/www/html /var/www/html
 
 # Copier Mercure
-COPY --from=mercure /mercure /usr/local/bin/mercure
+# COPY --from=mercure /mercure /usr/local/bin/mercure
+# Télécharger Mercure
+RUN curl -L https://github.com/dunglas/mercure/releases/download/v0.14.0/mercure_0.14.0_linux_amd64.tar.gz \
+    | tar xz -C /usr/local/bin
+RUN chmod +x /usr/local/bin/mercure
+
+CMD sh -c "mercure run & php-fpm"
+
 
 # Définir les variables d’environnement pour Mercure
 ENV MERCURE_PUBLISH_ALLOWED_ORIGINS=*
