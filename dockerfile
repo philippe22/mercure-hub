@@ -27,7 +27,8 @@ WORKDIR /var/www/html
 COPY . .
 
 # Installer les dépendances PHP
-RUN composer install --no-dev --optimize-autoloader --prefer-dist --no-interaction
+# RUN composer install --no-dev --optimize-autoloader --prefer-dist --no-interaction
+RUN composer install --no-dev --optimize-autoloader --prefer-dist -vvv
 
 # Étape 2 : Télécharger Mercure
 RUN curl -L https://github.com/dunglas/mercure/releases/download/v0.14.0/mercure_0.14.0_linux_amd64.tar.gz \
