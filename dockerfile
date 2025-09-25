@@ -38,7 +38,7 @@ COPY --from=mercure /mercure /usr/local/bin/mercure
 # Définir les variables d’environnement pour Mercure
 ENV MERCURE_PUBLISH_ALLOWED_ORIGINS=*
 ENV MERCURE_SUBSCRIBE_ALLOWED_ORIGINS=*
-ENV JWT_KEY=ChangeMoiParTaCleJWTSympa
+ENV JWT_KEY=!MaCleSecreteMercure!
 ENV ADDR=0.0.0.0:80
 
 # Exposer le port pour Render
